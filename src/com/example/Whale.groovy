@@ -23,10 +23,10 @@ class Whale implements Serializable  {
                         passwordVariable: 'PASS'
                 )
         ]) {
-            {
-                script.sh "echo ${script.PASS} | docker login -u ${script.USER} --password-stdin"
-                script.sh "docker push artifact $imageName"
-            }
+
+            script.sh "echo ${script.PASS} | docker login -u ${script.USER} --password-stdin"
+            script.sh "docker push artifact $imageName"
+
         }
     }
 }
