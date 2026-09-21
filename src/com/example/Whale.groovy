@@ -9,16 +9,16 @@ class Whale implements Serializable  {
     }
     def imageBuild(String imageName) {
         script.echo "building the docker artifact for branch ${script.BRANCH_NAME}"
-        script.sh "docker build -t script.$imageName ."
+        script.sh "docker build -t $imageName ."
 
     }
     def testBuild(String imageName ) {
         script.echo "testing health for image $imageName"
     }
     def deployBuild(String imageName) {
-        script.withCredntials ([
+        script.withCredentials ([
                 script.usernamePassword (
-                        crednetialsId: 'dockerhub-creds',
+                        credentialsId: 'dockerhub-creds',
                         usernameVariable: 'USER',
                         passwordVariable: 'PASS'
                 )
