@@ -16,7 +16,7 @@ class Whale implements Serializable  {
         script.echo "testing health for image $imageName"
     }
     def deployBuild(String imageName) {
-        script.withCredentials ([
+        script.withCredentials([
                 script.usernamePassword (
                         credentialsId: 'dockerhub-creds',
                         usernameVariable: 'USER',
@@ -25,7 +25,7 @@ class Whale implements Serializable  {
         ]) {
 
             script.sh "echo ${script.PASS} | docker login -u ${script.USER} --password-stdin"
-            script.sh "docker push artifact $imageName"
+            script.sh "docker push $imageName"
 
         }
     }
