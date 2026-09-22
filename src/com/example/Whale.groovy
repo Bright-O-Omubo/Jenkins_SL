@@ -8,7 +8,7 @@ class Whale implements Serializable  {
         this.script= script
     }
     def imageBuild(String imageName) {
-        script.echo "building the docker artifact for branch ${script.BRANCH_NAME}"
+        script.echo "building the docker artifact for branch BRANCH_NAME"
         script.sh "docker build -t $imageName ."
 
     }
